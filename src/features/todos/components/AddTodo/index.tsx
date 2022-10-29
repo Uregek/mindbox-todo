@@ -22,8 +22,15 @@ export const AddTodo = () => {
         label="What needs to be done?"
         size="small"
         variant="outlined"
+        inputProps={{ 'data-testid': 'task-input' }}
       />
-      <Button disabled={!task.length} size="small" variant="outlined" onClick={handleAddTodoClick}>
+      <Button
+        data-testid="add-todo-button"
+        disabled={!task.length}
+        size="small"
+        variant="outlined"
+        onClick={handleAddTodoClick}
+      >
         Add todo
       </Button>
     </Box>

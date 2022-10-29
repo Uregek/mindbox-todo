@@ -46,11 +46,12 @@ export const TodoList = () => {
   }, [currentFilter, todos]);
 
   return (
-    <TransitionGroup>
+    <TransitionGroup data-testid="todo-list">
       {filteredTodos.map((todo, index) => (
         <Collapse key={todo.id}>
           <Box sx={{ mt: index === 0 ? 0 : 1 }}>
             <Paper
+              data-testid={`todo-${todo.id}`}
               onClick={() => dispatch(toggleTodoDone(todo.id))}
               sx={{
                 display: 'flex',
@@ -72,6 +73,7 @@ export const TodoList = () => {
         </Collapse>
       ))}
       <Paper
+        data-testid="list-functions"
         variant="outlined"
         sx={{
           display: 'flex',
@@ -87,6 +89,7 @@ export const TodoList = () => {
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="filter-selector">Filter</InputLabel>
           <Select
+            data-testid="filter-selector"
             labelId="filter-selector"
             id="filter-selector"
             value={currentFilter}
@@ -102,6 +105,7 @@ export const TodoList = () => {
         </FormControl>
 
         <Link
+          data-testid="clear-completed-button"
           underline="hover"
           sx={{ cursor: 'pointer' }}
           onClick={() => dispatch(clearCompletedTodos())}
