@@ -72,47 +72,48 @@ export const TodoList = () => {
           </Box>
         </Collapse>
       ))}
-      <Paper
-        data-testid="list-functions"
-        variant="outlined"
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mt: 1,
-          p: 1,
-        }}
-      >
-        <Typography>{notDoneTodosCount} items left</Typography>
-
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="filter-selector">Filter</InputLabel>
-          <Select
-            data-testid="filter-selector"
-            labelId="filter-selector"
-            id="filter-selector"
-            value={currentFilter}
-            label="Filter"
-            onChange={handleFilterChange}
-          >
-            {filters.map(filter => (
-              <MenuItem key={filter} value={filter}>
-                {filter}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
-        <Link
-          data-testid="clear-completed-button"
-          underline="hover"
-          sx={{ cursor: 'pointer' }}
-          onClick={() => dispatch(clearCompletedTodos())}
+      <Collapse data-testid="list-functions">
+        <Paper
+          variant="outlined"
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            mt: 1,
+            p: 1,
+          }}
         >
-          clear completed
-        </Link>
-      </Paper>
+          <Typography>{notDoneTodosCount} items left</Typography>
+
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="filter-selector">Filter</InputLabel>
+            <Select
+              data-testid="filter-selector"
+              labelId="filter-selector"
+              id="filter-selector"
+              value={currentFilter}
+              label="Filter"
+              onChange={handleFilterChange}
+            >
+              {filters.map(filter => (
+                <MenuItem key={filter} value={filter}>
+                  {filter}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <Link
+            data-testid="clear-completed-button"
+            underline="hover"
+            sx={{ cursor: 'pointer' }}
+            onClick={() => dispatch(clearCompletedTodos())}
+          >
+            clear completed
+          </Link>
+        </Paper>
+      </Collapse>
     </TransitionGroup>
   );
 };
